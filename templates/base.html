@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>{% block title %}CareX{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'css/logo.css' %}">
+        <link rel="stylesheet" href="{% static 'css/marketing.css' %}">
+    </head>
+    <body>
+        <header class="site-header">
+            <a class="brand" href="{% if user.is_staff %}{% url 'admin_dashboard' %}{% else %}{% url 'home' %}{% endif %}" aria-label="CareX home">
+                <img src="{% static 'images/carex-logo.png' %}" alt="CareX">
+            </a>
+            <nav>{% if user.is_authenticated %}{% if user.is_staff %}
+                <a href="{% url 'admin_dashboard' %}">Admin dashboard</a>
+                <a href="{% url 'admin_bookings' %}">Manage bookings</a>
+                <a href="{% url 'admin_users' %}">Customers</a>{% else %}
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'garage' %}">My garage</a>
+                <a href="{% url 'bookings' %}">Bookings</a>
+                <a href="{% url 'profile' %}">Profile</a>{% endif %}
+                <a class="nav-button" href="{% url 'logout' %}">Log out</a>{% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <a class="nav-button" href="{% url 'register' %}">Get started</a>{% endif %}
+            </nav>
+        </header>
+        <main class="container">{% if messages %}{% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}{% endif %}{% block content %}{% endblock %}
+        </main>
+        <footer>CareX &mdash; straightforward car care.</footer>
+    </body>
+</html>

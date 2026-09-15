@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p class="eyebrow">SERVICE HISTORY</p>
+<h1>Completed work.</h1>
+
+<div class="panel">
+    {% for booking in bookings %}
+    <div class="booking-row">
+        <span class="date">{{ booking.preferred_date|date:'d M' }}</span>
+
+        <span>
+            <b>{{ booking.get_service_type_display }}</b>
+            <small>{{ booking.vehicle }}</small>
+            <small>Estimated Cost: ₹{{ booking.estimated_cost }}</small>
+        </span>
+
+        <i class="status completed">Completed</i>
+    </div>
+    {% empty %}
+        <p class="empty">Your completed services will appear here.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

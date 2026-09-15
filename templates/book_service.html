@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">SERVICE BOOKING</p>
+    <h1>What does your car need?</h1>{% if not user.vehicles.exists %}
+    <p>
+        You’ll need to <a href="{% url 'add_vehicle' %}">add a vehicle</a>before making a booking.
+    </p>{% else %}
+    <form method="post" class="form-grid">{% csrf_token %}{% for field in form %}
+        <label>{{ field.label }}{{ field }}{% for error in field.errors %}
+            <small class="error">{{ error }}</small>{% endfor %}
+        </label>{% endfor %}
+        <button>Request service</button>
+    </form>{% endif %}
+</div>{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareX | Car care made easy{% endblock %}{% block content %}
+<section class="hero">
+    <div><p class="eyebrow">CARE WITHOUT THE GUESSWORK</p>
+        <h1>Your car's care,<br><em>all in one place.</em></h1>
+        <p class="lead">Keep vehicles, bookings and service history organised with CareX.</p>
+        {% if user.is_authenticated %}
+        <a class="button" href="{% url 'dashboard' %}">Open dashboard</a>
+        {% else %}
+        <a class="button" href="{% url 'register' %}">Create free account</a>
+        {% endif %}
+    </div>
+    <div class="hero-card"><img src="{% static 'images/carex-logo.png' %}" alt="CareX">
+        <p>Drive with confidence.</p>
+        <small>Book the service your vehicle needs, when it needs it.</small>
+    </div>
+</section>
+<section class="trust-strip" aria-label="CareX highlights">
+    <article>
+        <strong>200,000+</strong><span>Customers served</span>
+    </article>
+    <article>
+        <strong>4.8 <em>★</em></strong><span>Customer rating</span>
+    </article>
+    <article>
+        <strong>25+</strong><span>Service places in Kerala</span>
+    </article>
+    <article>
+        <strong>30 days</strong><span>Service warranty</span>
+    </article>
+</section>
+<section class="about-carex">
+    <div>
+        <p class="eyebrow">RELIABLE CAR CARE, CLOSE TO HOME</p>
+        <h2>Looking for reliable service in Kerala?</h2>
+    </div>
+    <div>
+        <p>CareX makes car care feel simple and dependable. 
+           From a regular oil change to a detailed inspection, 
+           we help you book trusted service at convenient locations across Kerala.
+        </p>
+        <p>Tell us what your vehicle needs, choose a time that works for you, and keep every service detail in one organised place.</p><a href="{% url 'book_service' %}" class="text-link">Book your service →</a></div></section>
+<section class="features">
+    <article>
+        <b>01</b>
+        <h3>Build your garage</h3>
+        <p>Save every vehicle and its essential details.</p>
+    </article>
+    <article>
+        <b>02</b>
+        <h3>Book in minutes</h3>
+        <p>Choose a service and request your preferred slot.</p>
+    </article>
+    <article>
+        <b>03</b>
+        <h3>Stay informed</h3>
+        <p>See upcoming work and your complete service record.</p>
+    </article>
+</section>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">YOUR GARAGE</p>
+        <h1>Vehicles you care for.</h1>
+    </div>
+    <a class="button" href="{% url 'add_vehicle' %}">+ Add vehicle</a>
+</div>
+<section class="vehicle-grid">{% for vehicle in vehicles %}
+    <article class="vehicle-card">
+        <span>🚘</span>
+        <h2>{{ vehicle.make }} {{ vehicle.model }}</h2>
+        <p>{{ vehicle.registration_number }} · {{ vehicle.year }}</p>
+        <small>{{ vehicle.mileage|default:'—' }} km recorded</small>
+    </article>{% empty %}
+    <div class="empty panel">Your garage is empty. 
+        <a href="{% url 'add_vehicle' %}">Add your first vehicle</a>.
+    </div>{% endfor %}
+</section>{% endblock %}

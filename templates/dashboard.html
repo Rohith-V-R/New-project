@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">YOUR OVERVIEW</p>
+        <h1>Hi, {{ user.first_name|default:user.username }}.</h1>
+        <p>Here's what's happening with your vehicles.</p>
+    </div>
+    <a class="button" href="{% url 'book_service' %}">+ Book a service</a>
+</div>
+<section class="stats">
+    <div>
+        <small>VEHICLES</small>
+        <strong>{{ vehicle_count }}</strong>
+    </div>
+    <div>
+        <small>ACTIVE BOOKINGS</small>
+        <strong>{{ booking_count }}</strong>
+    </div>
+    <div>
+        <small>CARE STATUS</small>
+        <strong>On track</strong>
+    </div>
+</section>
+<section class="content-grid">
+    <div class="panel">
+        <div class="panel-title">
+            <h2>Upcoming bookings</h2>
+            <a href="{% url 'bookings' %}">View all</a>
+        </div>{% for booking in upcoming %}
+        <a class="booking-row" href="{% url 'booking_details' booking.pk %}">
+            <span class="date">{{ booking.preferred_date|date:'d M' }}</span>
+            <span>
+                <b>{{ booking.get_service_type_display }}</b>
+                <small>{{ booking.vehicle }} · {{ booking.preferred_time|time:'g:i A' }}</small>
+            </span>
+            <i class="status {{ booking.status|lower }}">{{ booking.get_status_display }}</i>
+        </a>{% empty %}
+        <p class="empty">Nothing booked yet. Your next smooth drive starts here.</p>{% endfor %}
+    </div>
+    <div class="panel accent">
+        <h2>Keep it moving.</h2>
+        <p>Regular care helps you avoid surprises on the road.</p>
+        <a href="{% url 'add_vehicle' %}">Add a vehicle →</a>
+    </div>
+</section>{% endblock %}

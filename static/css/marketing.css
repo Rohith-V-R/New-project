@@ -1,0 +1,83 @@
+.trust-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+    background:#041d29;
+    padding:60px 8%;
+    border:none;
+    margin:0;
+    color:#fff;
+}
+
+.trust-strip article{
+    background:transparent;
+    text-align:center;
+}
+
+.trust-strip strong{
+    display:block;
+    font-size:46px;
+    color:#58ff98;
+}
+
+.trust-strip strong em{
+    font-style:normal;
+    color:#58ff98;
+}
+
+.trust-strip span{
+    display:block;
+    color:#cfd9df;
+    font-size:17px;
+    margin-top:8px;
+}
+
+.about-carex{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    padding:90px 8%;
+    background:#ffffff;
+}
+
+.about-carex h2{
+    font-size:clamp(2rem,3.4vw,3.5rem);
+    margin:0;
+}
+
+.about-carex p{
+    color:#666;
+    line-height:1.8;
+}
+
+.text-link{
+    display:inline-block;
+    margin-top:15px;
+    color:#176b52;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.text-link:hover{
+    color:#0f4f3d;
+}
+
+@media(max-width:768px){
+
+    .trust-strip{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-carex{
+        grid-template-columns:1fr;
+    }
+
+}
+h1{
+    margin: 10px 0 22px;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #176b23;
+    letter-spacing: -0.5px;
+}

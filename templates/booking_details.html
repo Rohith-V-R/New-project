@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="detail-card">
+    <p class="eyebrow">BOOKING #{{ booking.pk }}</p>
+    <h1>{{ booking.get_service_type_display }}</h1>
+    <i class="status {{ booking.status|lower }}">{{ booking.get_status_display }}</i>
+    <hr>
+    <dl>
+        <dt>Vehicle</dt>
+        <dd>{{ booking.vehicle }}</dd>
+        <dt>Preferred appointment</dt>
+        <dd>{{ booking.preferred_date|date:'l, d F Y' }} at {{ booking.preferred_time|time:'g:i A' }}</dd>
+        <dt>Your notes</dt>
+        <dd>{{ booking.notes|default:'No additional notes.' }}</dd>{% if booking.estimated_cost %}
+        <dt>Estimated cost</dt>
+        <dd>₹{{ booking.estimated_cost }}</dd>{% endif %}
+    </dl>
+    <a href="{% url 'bookings' %}">← Back to bookings</a>
+</div>{% endblock %}

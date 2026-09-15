@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">TEAM CONSOLE</p>
+        <h1>All bookings</h1>
+    </div>
+    <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+</div>
+<div class="panel table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Service</th>
+                <th>Appointment</th>
+                <th>Status</th>
+                <th>estimated_cost</th>
+            </tr>
+        </thead>
+        <tbody>{% for booking in bookings %}
+            <tr>
+                <td>#{{ booking.pk }}</td>
+                <td>{{ booking.vehicle.owner.get_full_name|default:booking.vehicle.owner.username }}</td>
+                <td>{{ booking.vehicle }}</td>
+                <td>{{ booking.get_service_type_display }}</td>
+                <td>{{ booking.preferred_date|date:'d M Y' }}</td>
+                <td>
+                    <form method="post">{% csrf_token %}
+                        <input type="hidden" name="booking_id" value="{{ booking.pk }}">
+                        <select name="status">{% for value, label in statuses %}
+                            <option value="{{ value }}" {% if booking.status == value %}selected{% endif %}>{{ label }}
+                            </option>{% endfor %}
+                        </select> 
+                    <button class="small-button">Save</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post">{% csrf_token %}
+                        <input type="hidden" name="booking_id" value="{{ booking.pk }}">
+                        <input type="number"name='estimated_cost'>    
+                        <button class="small-button">Save</button>
+                    </form>
+                </td>
+            </tr>{% empty %}
+             <tr>
+                <td colspan="6">No bookings.</td>
+            </tr>{% endfor %}
+         </tbody>
+    </table>
+ </div>{% endblock %}

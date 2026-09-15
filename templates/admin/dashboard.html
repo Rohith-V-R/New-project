@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="eyebrow">TEAM CONSOLE</p>
+<h1>Service operations.</h1>
+<section class="stats">
+    <div>
+        <small>ALL BOOKINGS</small>
+        <strong>{{ booking_count }}</strong>
+    </div>
+    <div>
+        <small>PENDING</small>
+        <strong>{{ pending_count }}</strong>
+    </div>
+    <div>
+        <small>CUSTOMERS</small>
+        <strong>{{ user_count }}</strong>
+    </div>
+</section>
+<div class="panel">
+    <div class="panel-title">
+        <h2>Recent bookings</h2>
+        <a href="{% url 'admin_bookings' %}">Manage all</a>
+    </div>{% for booking in recent %}
+    <div class="booking-row">
+        <span class="date">{{ booking.preferred_date|date:'d M' }}</span>
+        <span>
+            <b>{{ booking.get_service_type_display }}</b>
+            <small>{{ booking.vehicle.owner.get_full_name|default:booking.vehicle.owner.username }} · {{ booking.vehicle }}</small>
+        </span>
+        <i class="status {{ booking.status|lower }}">{{ booking.get_status_display }}</i>
+    </div>{% endfor %}
+</div>{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="eyebrow">TEAM CONSOLE</p>
+<h1>Customers</h1>
+<div class="panel table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Vehicles</th>
+                <th>Bookings</th>
+            </tr>
+        </thead>
+        <tbody>{% for item in users %}
+            <tr>
+                <td>{{ item.get_full_name|default:'—' }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.vehicle_total }}</td>
+                <td>{{ item.booking_total }}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+</div>{% endblock %}

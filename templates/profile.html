@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">ACCOUNT SETTINGS</p>
+    <h1>Your profile</h1>
+    <form method="post" class="form-grid">{% csrf_token %}{% for field in form %}
+        <label>{{ field.label }}{{ field }}{% for error in field.errors %}
+            <small class="error">{{ error }}</small>{% endfor %}
+        </label>{% endfor %}
+        <button>Save changes</button>
+    </form>
+    <p>
+        <a href="{% url 'history' %}">View service history →</a>
+    </p>
+</div>{% endblock %}

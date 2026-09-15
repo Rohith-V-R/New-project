@@ -1,0 +1,443 @@
+:root{
+    --ink:#13231f;
+    --muted:#64716d;
+    --cream:#f6f4ed;
+    --green:#176b52;
+    --lime:#d8f067;
+    --line:#dce2dd;
+}
+*{
+    box-sizing:border-box;
+}
+body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:Arial,sans-serif;
+    line-height:1.5;
+}
+.site-header{
+    height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7vw;
+    border-bottom:1px solid var(--line);
+    background:#fbfaf6;
+}
+.brand{
+    font-size:1.6rem;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+.brand span{
+    color:var(--green);
+}
+a{
+    color:var(--green);
+    text-decoration:none;
+}
+nav{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    font-size:.9rem;
+}
+nav a{
+    color:var(--ink);
+}
+.nav-button,
+.button,
+button{
+    background:var(--green);
+    border:0;
+    border-radius:6px;
+    color:#fff;
+    padding:11px 17px;
+    font:inherit;
+    cursor:pointer;
+}
+.container{
+    width:min(1120px,86vw);
+    margin:0 auto;
+    padding:62px 0;
+    min-height:calc(100vh - 130px);
+}
+footer{
+    padding:28px 7vw;
+    background:var(--ink);
+    color:#c2ceca;
+    font-size:.86rem;
+}
+.hero{
+    min-height:440px;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:48px;
+    align-items:center;
+}
+.eyebrow{
+    font-size:.74rem;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    color:var(--green);
+    margin:0 0 12px;
+}
+h1{
+    font-size:clamp(2.2rem,5vw,4.6rem);
+    letter-spacing:-.07em;
+    line-height:1.02;
+    margin:0 0 20px;
+}
+h1 em{
+    font-family:Georgia,serif;
+    font-weight:normal;
+}
+.lead{
+    max-width:470px;
+    color:var(--muted);
+    font-size:1.12rem;
+    margin:0 0 30px;
+}
+.hero-card{
+    background:var(--green);
+    color:#fff;
+    border-radius:22px;
+    padding:54px 38px;
+    font-size:5rem;
+    transform:rotate(3deg);
+}
+.hero-card p{
+    font-size:1.4rem;
+    font-weight:bold;
+    margin:22px 0 4px;
+}
+.hero-card small{
+    font-size:.92rem;
+    display:block;
+    line-height:1.4;
+}
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    border-top:1px solid var(--line);
+    padding-top:34px;
+}
+.features article{
+    padding-right:25px;
+}
+.features b{
+    color:var(--green);
+    font-size:.8rem;
+}
+.features h3{
+    margin:8px 0;
+}
+.features p{
+    color:var(--muted);
+    margin:0;
+}
+.message{
+    padding:13px 17px;
+    margin-bottom:25px;
+    border-radius:5px;
+    background:#000000;
+    color:#175b36;
+}
+.message.error{
+    background:#f9e4e2;
+    color:#8b251d;
+}
+.page-heading{
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    align-items:end;
+    margin-bottom:34px;
+}
+.page-heading h1{
+    font-size:3.1rem;
+    margin:0;
+}
+.page-heading p:not(.eyebrow){
+    color:var(--muted);
+}
+.empty{
+    color:var(--muted);
+    padding:20px 0;
+}
+.vehicle-grid{display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+    gap:18px;
+}
+.vehicle-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:25px;
+}
+.vehicle-card>span{
+    font-size:2rem;
+}
+.vehicle-card h2{
+    font-size:1.35rem;
+    margin:15px 0 2px;
+}
+.vehicle-card p,
+.vehicle-card small{
+    color:var(--muted);
+}
+.detail-card{
+    max-width:700px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:42px;
+}
+.detail-card h1{
+    font-size:3rem;
+}
+.detail-card hr{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:28px 0;
+}
+.detail-card dl{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:18px;
+}
+.detail-card dt{
+    color:var(--muted);
+}
+.detail-card dd{
+    margin:0;
+    font-weight:500;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    text-align:left;
+}
+th,
+td{
+    padding:14px;
+    border-bottom:1px solid var(--line);
+    font-size:.9rem;
+}
+th{
+    color:var(--muted);
+    font-size:.73rem;
+    letter-spacing:1px;
+}
+.small-button{
+    padding:6px 10px;
+    font-size:.77rem;
+    margin-left:4px;
+}
+/* ===============================
+   CAREX PREMIUM HOMEPAGE
+================================= */
+
+.hero-home + .site-header{
+    position:absolute;
+}
+
+.site-header{
+    height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7vw;
+    border-bottom:1px solid var(--line);
+    background:#fbfaf6;
+    position:relative;
+}
+
+.site-header nav a:hover{
+    color:#57ff7b;
+}
+
+.nav-button{
+    border-radius:40px;
+    padding:12px 26px;
+}
+
+.container{
+    width:100%;
+    max-width:100%;
+    padding:0;
+}
+
+.hero-home{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    align-items:center;
+
+    padding:120px 8%;
+
+    background:
+    linear-gradient(
+    rgba(5,15,35,.82),
+    rgba(5,15,35,.70)
+    ),
+    url("../images/home-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    overflow:hidden;
+
+}
+
+.hero-home::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    90deg,
+    rgba(0,10,25,.92) 0%,
+    rgba(0,10,25,.75) 45%,
+    rgba(0,10,25,.25) 100%
+    );
+
+}
+
+.hero-home>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-home .eyebrow{
+
+    color:#7dffad;
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
+}
+
+.hero-home h1{
+
+    font-size:72px;
+
+    color:white;
+
+    line-height:1.05;
+
+    margin-bottom:25px;
+
+}
+
+.hero-home h1 em{
+
+    font-style:normal;
+
+    color:#66ff9d;
+
+}
+
+.hero-home .lead{
+
+    color:#d9e2f2;
+
+    max-width:550px;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+}
+
+.hero-home .button{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    background:#1ec96b;
+
+    padding:18px 42px;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+.hero-home .button:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(30,201,107,.35);
+
+}
+
+.hero-home .hero-card{
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    padding:50px;
+
+    transform:none;
+
+    color:white;
+
+}
+
+.hero-home .hero-card img{
+
+    width:230px;
+
+}
+
+.hero-home .hero-card p{
+
+    font-size:30px;
+
+    margin-top:25px;
+
+}
+
+.hero-home .hero-card small{
+
+    color:#d8d8d8;
+
+}
+
+h1{
+    margin: 10px 0 22px;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #55d1b2;
+    letter-spacing: -0.5px;
+}

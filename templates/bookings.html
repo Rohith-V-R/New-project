@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">SERVICE BOOKINGS</p>
+        <h1>Keep track of the work.</h1>
+    </div>
+
+    <a class="button" href="{% url 'book_service' %}">+ Book service</a>
+</div>
+
+<div class="panel">
+    {% for booking in bookings %}
+    <a class="booking-row" href="{% url 'booking_details' booking.pk %}">
+        <span class="date">
+            {{ booking.preferred_date|date:'d M' }}
+        </span>
+
+        <span>
+            <b>{{ booking.get_service_type_display }}</b><br>
+
+            <small>
+                {{ booking.vehicle }} ·
+                {{ booking.preferred_time|time:'g:i A' }}
+            </small>
+
+            <br>
+
+            <small class="estimate">
+                <strong>Estimated Cost:</strong>
+                ₹{{ booking.estimated_cost }}
+            </small>
+        </span>
+
+        <i class="status {{ booking.status|lower }}">
+            {{ booking.get_status_display }}
+        </i>
+    </a>
+    {% empty %}
+        <p class="empty">
+            No active bookings.
+            <a href="{% url 'book_service' %}">Book your next service</a>.
+        </p>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:28px 0
+}
+.stats>div,
+.panel{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:11px;
+    padding:23px;
+}
+.stats small{
+    display:block;
+    color:var(--muted);
+    font-size:.7rem;
+    font-weight:bold;
+    letter-spacing:1.1px;
+}
+.stats strong{
+    font-size:1.85rem;
+    display:block;
+    margin-top:5px;
+}
+.content-grid{
+    display:grid;
+    grid-template-columns:1.55fr .7fr;
+    gap:18px;
+}
+.panel-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.panel-title h2,
+.panel h2{
+    font-size:1.2rem;
+    margin:0;
+}
+.booking-row{padding:17px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    color:var(--ink);
+}
+.booking-row:last-child{
+    border-bottom:0;
+}
+.date{
+    width:47px;
+    color:var(--green);
+    font-weight:bold;
+}
+.booking-row b,
+.booking-row small{
+    display:block;
+}
+.booking-row small{
+    color:var(--muted);
+    font-size:.82rem;
+    margin-top:3px;
+}
+.status{
+    margin-left:auto;
+    border-radius:20px;
+    padding:5px 10px;
+    font-size:.72rem;
+    font-style:normal;
+    background:#eef1ef;
+    color:#50605a;
+    white-space:nowrap;
+}
+.status.confirmed,
+.status.completed{
+    background:#dff4e8;
+    color:#1b6c43;
+}
+.status.in_progress{
+    background:#fff0c6;
+    color:#795400;
+}
+.status.cancelled{
+    background:#f9e4e2;
+    color:#9b342f;
+}
+.accent{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
+}
+.accent p{
+    color:#bdc8c3;
+}
+.accent a{
+    color:var(--lime);
+}
+.table-wrap{
+    overflow:auto;
+}
