@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{% static 'css/logo.css' %}">
         <link rel="stylesheet" href="{% static 'css/marketing.css' %}">
     </head>
-    <body>
+    <body class="{% block body_class %}{% endblock %}">
         <header class="site-header">
             <a class="brand" href="{% if user.is_staff %}{% url 'admin_dashboard' %}{% else %}{% url 'home' %}{% endif %}" aria-label="CareX home">
                 <img src="{% static 'images/carex-logo.png' %}" alt="CareX">
@@ -25,8 +25,10 @@
                 <a href="{% url 'bookings' %}">Bookings</a>
                 <a href="{% url 'profile' %}">Profile</a>{% endif %}
                 <a class="nav-button" href="{% url 'logout' %}">Log out</a>{% else %}
+                {% block nav_auth %}
                 <a href="{% url 'login' %}">Log in</a>
-                <a class="nav-button" href="{% url 'register' %}">Get started</a>{% endif %}
+                <a class="nav-button" href="{% url 'register' %}">Get started</a>
+                {% endblock nav_auth %}{% endif %}
             </nav>
         </header>
         <main class="container">{% if messages %}{% for message in messages %}

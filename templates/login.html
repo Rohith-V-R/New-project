@@ -1,13 +1,167 @@
 {% extends 'base.html' %}
 {% block title %}Log in | CareX{% endblock %}
+
+{% block nav_auth %}{% endblock nav_auth %}
+
 {% block content %}
-<div class="form-card narrow">
-    <p class="eyebrow">WELCOME BACK</p>
-    <h1>Log in to CareX</h1>
+<div class="form-card narrow professional-login">
+    <div class="login-header">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Log in to CareX</h1>
+        <p class="subtitle">Enter your credentials to access your account.</p>
+    </div>
+    
     <form method="post">{% csrf_token %}
-        <label>Username<input name="username" required autofocus></label>
-        <label>Password<input type="password" name="password" required></label>
-        <button>Log in</button>
+        <label>
+            <span class="label-text">Username</span>
+            <input name="username" required autofocus class="form-input">
+        </label>
+        
+        <label class="password-label">
+            <span class="label-text">Password</span>
+            <div class="password-wrapper">
+                <input type="password" name="password" id="password" required class="form-input">
+                <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                    <!-- SVG Eye Icon -->
+                    <svg class="eye-icon" id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <!-- SVG Eye Off Icon -->
+                    <svg class="eye-icon-off" id="eye-icon-off" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                </button>
+            </div>
+        </label>
+        
+        <button type="submit" class="login-button">Log in to dashboard</button>
     </form>
-    <p>New here? <a href="{% url 'register' %}">Create an account</a>.</p>
-</div>{% endblock %}
+    
+    <div class="login-footer">
+        <p>New here? <a href="{% url 'register' %}">Create an account</a>.</p>
+    </div>
+</div>
+
+<style>
+/* CSS for professional login */
+.professional-login {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: none;
+    border-radius: 16px;
+    padding: 50px;
+    background: #ffffff;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    font-size: 2.2rem;
+    margin: 5px 0 10px;
+    color: #1a2521;
+}
+
+.login-header .subtitle {
+    color: #64716d;
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #dce2dd;
+    border-radius: 8px;
+    background: #fbfaf6;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-input:focus {
+    border-color: #176b52;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(23, 107, 82, 0.1);
+    outline: none;
+}
+
+.label-text {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5551;
+    font-weight: 600;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8c9b96;
+    padding: 4px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: #176b52;
+}
+
+.login-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 15px;
+    background: #176b52;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: #125440;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(23, 107, 82, 0.25);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f3f1;
+}
+
+.login-footer p {
+    color: #64716d;
+}
+
+.login-footer a {
+    color: #176b52;
+    font-weight: 600;
+}
+</style>
+
+<script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    var eyeIcon = document.getElementById("eye-icon");
+    var eyeIconOff = document.getElementById("eye-icon-off");
+    
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.style.display = "none";
+        eyeIconOff.style.display = "block";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.style.display = "block";
+        eyeIconOff.style.display = "none";
+    }
+}
+</script>
+{% endblock %}

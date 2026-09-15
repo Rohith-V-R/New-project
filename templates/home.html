@@ -1,63 +1,81 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}CareX | Car care made easy{% endblock %}{% block content %}
-<section class="hero">
-    <div><p class="eyebrow">CARE WITHOUT THE GUESSWORK</p>
-        <h1>Your car's care,<br><em>all in one place.</em></h1>
-        <p class="lead">Keep vehicles, bookings and service history organised with CareX.</p>
-        {% if user.is_authenticated %}
-        <a class="button" href="{% url 'dashboard' %}">Open dashboard</a>
-        {% else %}
-        <a class="button" href="{% url 'register' %}">Create free account</a>
-        {% endif %}
-    </div>
-    <div class="hero-card"><img src="{% static 'images/carex-logo.png' %}" alt="CareX">
-        <p>Drive with confidence.</p>
-        <small>Book the service your vehicle needs, when it needs it.</small>
-    </div>
-</section>
-<section class="trust-strip" aria-label="CareX highlights">
-    <article>
-        <strong>200,000+</strong><span>Customers served</span>
-    </article>
-    <article>
-        <strong>4.8 <em>★</em></strong><span>Customer rating</span>
-    </article>
-    <article>
-        <strong>25+</strong><span>Service places in Kerala</span>
-    </article>
-    <article>
-        <strong>30 days</strong><span>Service warranty</span>
-    </article>
-</section>
-<section class="about-carex">
-    <div>
-        <p class="eyebrow">RELIABLE CAR CARE, CLOSE TO HOME</p>
-        <h2>Looking for reliable service in Kerala?</h2>
-    </div>
-    <div>
-        <p>CareX makes car care feel simple and dependable. 
-           From a regular oil change to a detailed inspection, 
-           we help you book trusted service at convenient locations across Kerala.
-        </p>
-        <p>Tell us what your vehicle needs, choose a time that works for you, and keep every service detail in one organised place.</p><a href="{% url 'book_service' %}" class="text-link">Book your service →</a></div></section>
-<section class="features">
-    <article>
-        <b>01</b>
-        <h3>Build your garage</h3>
-        <p>Save every vehicle and its essential details.</p>
-    </article>
-    <article>
-        <b>02</b>
-        <h3>Book in minutes</h3>
-        <p>Choose a service and request your preferred slot.</p>
-    </article>
-    <article>
-        <b>03</b>
-        <h3>Stay informed</h3>
-        <p>See upcoming work and your complete service record.</p>
-    </article>
-</section>
+{% block title %}CareX | Car care made easy{% endblock %}
+{% block body_class %}home-page{% endblock %}
+{% block content %}
+<div class="home-wrapper">
+    <section class="hero hero-home">
+        <div><p class="eyebrow">CARE WITHOUT THE GUESSWORK</p>
+            <h1>Your car's care,<br><em>all in one place.</em></h1>
+            <p class="lead">Keep vehicles, bookings and service history organised with CareX.</p>
+            {% if user.is_authenticated %}
+            <a class="button" href="{% url 'dashboard' %}">Open dashboard</a>
+            {% else %}
+            <a class="button" href="{% url 'register' %}">Create free account</a>
+            {% endif %}
+        </div>
+        <div class="hero-card"><img src="{% static 'images/carex-logo.png' %}" alt="CareX">
+            <p>Drive with confidence.</p>
+            <small>Book the service your vehicle needs, when it needs it.</small>
+        </div>
+    </section>
+    
+    <section class="trust-strip" aria-label="CareX highlights">
+        <article>
+            <strong>200,000+</strong><span>Customers served</span>
+        </article>
+        <article>
+            <strong>4.8 <em>★</em></strong><span>Customer rating</span>
+        </article>
+        <article>
+            <strong>25+</strong><span>Service places in Kerala</span>
+        </article>
+        <article>
+            <strong>30 days</strong><span>Service warranty</span>
+        </article>
+    </section>
+    
+    <section class="about-carex">
+        <div class="about-left">
+            <p class="eyebrow">RELIABLE CAR CARE, CLOSE TO HOME</p>
+            <h2>Looking for reliable service in Kerala?</h2>
+        </div>
+        <div class="about-right">
+            <p>CareX makes car care feel simple and dependable. 
+               From a regular oil change to a detailed inspection, 
+               we help you book trusted service at convenient locations across Kerala.
+            </p>
+            <p>Tell us what your vehicle needs, choose a time that works for you, and keep every service detail in one organised place.</p><a href="{% url 'book_service' %}" class="text-link">Book your service →</a>
+        </div>
+    </section>
+    
+    <section class="features">
+        <article>
+            <div class="feature-header">
+                <b>01</b>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <h3>Build your garage</h3>
+            <p>Save every vehicle and its essential details.</p>
+        </article>
+        <article>
+            <div class="feature-header">
+                <b>02</b>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+            </div>
+            <h3>Book in minutes</h3>
+            <p>Choose a service and request your preferred slot.</p>
+        </article>
+        <article>
+            <div class="feature-header">
+                <b>03</b>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <h3>Stay informed</h3>
+            <p>See upcoming work and your complete service record.</p>
+        </article>
+    </section>
+</div>
 {% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
